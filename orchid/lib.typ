@@ -7,7 +7,7 @@
 
 #let check-format(id) = {
   if type(id) != str {
-    panic("ORCID must be of type string: " + type(id))
+    panic("ORCID must be of type string: ", type(id))
   }
 
   if id.contains(regex("^(?:\d{4}-){3}\d{3}[\dX]$")) == false {
@@ -25,7 +25,7 @@
   position: none,
   logo-height: 1em,
   logo-width: 1em,
-  logo-separator: [~],
+  separator: [~],
 ) = {
   check-format(id)
 
@@ -46,11 +46,11 @@
     }
 
     if position == "right" {
-      return link(identifier-link)[#name#logo-separator#logo-icon]
+      return link(identifier-link)[#name#separator#logo-icon]
     } else if position == "left" {
-      return link(identifier-link)[#logo-icon#logo-separator#name]
+      return link(identifier-link)[#logo-icon#separator#name]
     } else {
-      return link(identifier-link)[#logo-icon#logo-separator#name]
+      return link(identifier-link)[#logo-icon#separator#name]
     }
   } else if format == "full" {
     if name == none {
@@ -58,7 +58,23 @@
     }
 
     if position == "right" {
-      return link(identifier-link)
+      return link(identifier-link)[#name#separator#identifier-link]
+    } else if position == "left" {
+      return link(identifier-link)[#identifier-link#separator#name]
+    } else {
+      return link(identifier-link)[#identifier-link#separator#name]
+    }
+  } else if format == "compact" {
+    if name == none {
+      return link(identifier-link, id)
+    }
+
+    if position == "right" {
+      return link(identifier-link)[#name#separator#id]
+    } else if position == "left" {
+      return link(identifier-link)[#id#separator#name]
+    } else {
+      return link(identifier-link)[#id#separator#name]
     }
   }
 }
