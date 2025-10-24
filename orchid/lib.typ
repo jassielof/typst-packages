@@ -1,9 +1,14 @@
 #let logo = image("assets/images/ORCID_iD.svg")
 #let base-url = "https://orcid.org/"
-
-#let is-valid(id) = {
-  return true
-}
+#let logo-icon(
+  size: 1em,
+  baseline: 0.125em,
+) = box(
+  logo,
+  width: size,
+  height: size,
+  baseline: baseline,
+)
 
 #let check-format(id) = {
   if type(id) != str {
@@ -22,10 +27,9 @@
   id,
   format: "logo",
   name: none,
-  position: none,
-  logo-height: 1em,
-  logo-width: 1em,
+  position: "left",
   separator: [~],
+  icon: logo-icon(),
 ) = {
   check-format(id)
 
@@ -33,48 +37,27 @@
     panic("Format must be logo, full, or compact: " + format)
   }
 
-  if type(position) == str and position not in ("left", "right") {
+  if position not in ("left", "right") {
     panic("Logo position must be left or right: " + position)
   }
 
   let identifier-link = base-url + id
-  let logo-icon = box(height: logo-height, width: logo-width, logo)
 
-  if format == "logo" {
-    if name == none {
-      return link(identifier-link, logo-icon)
-    }
-
-    if position == "right" {
-      return link(identifier-link)[#name#separator#logo-icon]
-    } else if position == "left" {
-      return link(identifier-link)[#logo-icon#separator#name]
-    } else {
-      return link(identifier-link)[#logo-icon#separator#name]
-    }
+  let display-content = if format == "logo" {
+    icon
   } else if format == "full" {
-    if name == none {
-      return link(identifier-link, identifier-link)
-    }
+    identifier-link
+  } else { id }
 
-    if position == "right" {
-      return link(identifier-link)[#name#separator#identifier-link]
-    } else if position == "left" {
-      return link(identifier-link)[#identifier-link#separator#name]
-    } else {
-      return link(identifier-link)[#identifier-link#separator#name]
-    }
-  } else if format == "compact" {
-    if name == none {
-      return link(identifier-link, id)
-    }
-
-    if position == "right" {
-      return link(identifier-link)[#name#separator#id]
-    } else if position == "left" {
-      return link(identifier-link)[#id#separator#name]
-    } else {
-      return link(identifier-link)[#id#separator#name]
-    }
+  if name == none {
+    return link(identifier-link, display-content)
   }
+
+  let content = if position == "right" {
+    [#name#separator#display-content]
+  } else {
+    [#display-content#separator#name]
+  }
+
+  return link(identifier-link)[#content]
 }

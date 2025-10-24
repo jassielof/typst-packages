@@ -1,5 +1,5 @@
 #import "../lib.typ" as orchid
-
+#import "@preview/metalogo:1.2.0"
 #let my-id = "0000-0000-0000-0000"
 #let my-name = [John Doe]
 
@@ -21,3 +21,16 @@ Orchid is a simple tool to generate ORCID iD links in various formats. Mainly in
 - #orchid.generate-link(my-id, format: "full")
 - #orchid.generate-link(my-id, format: "full", name: my-name)
 - #orchid.generate-link(my-id, format: "full", name: my-name, position: "right")
+
+== Customizing the logo icon
+To customize the logo icon you can just overwrite the `logo-icon` variable, for example:
+
+#raw(
+  block: true,
+  read("assets/snippets/logo-overwrite.typ"),
+  lang: "typst",
+)
+
+#image(
+  "assets/images/logo-overwrite.svg",
+)
