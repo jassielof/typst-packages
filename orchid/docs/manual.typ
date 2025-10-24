@@ -1,5 +1,4 @@
 #import "../lib.typ" as orchid
-#import "@preview/metalogo:1.2.0"
 #let my-id = "0000-0000-0000-0000"
 #let my-name = [John Doe]
 
