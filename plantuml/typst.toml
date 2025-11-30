@@ -1,0 +1,9 @@
+[package]
+name = "plantuml"
+version = "0.1.0"
+exclude = ["docs/"]
+entrypoint = "lib.typ"
+authors = ["Jassiel Ovando <@jassielof>"]
+repository = "https://github.com/jassielof/typst-packages"
+license = "MIT-0"
+description = "PlantUML tooling"
