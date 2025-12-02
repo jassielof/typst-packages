@@ -19,42 +19,46 @@
     s
   }
 }
+#set table(align: left)
 
 // This works fine, but breaks/messes up the justification in paragraphs.
-// #let fake-smallcaps(s, scaling: 0.65, expansion: 1.05, stroke: 0.005cm) = {
-//   show regex("\p{Ll}+"): it => context {
-//     box(
-//       scale(
-//         x: expansion * 100%,
-//         reflow: true,
-//         origin: center + bottom,
-//         text(
-//           size: scaling * 1em,
-//           upper(
-//             fake-bold(
-//               it,
-//               stroke: stroke,
-//             ),
-//           ),
-//         ),
-//       ),
-//     )
-//   }
+#let fake-smallcaps(s, scaling: 0.65, expansion: 1.05, stroke: 0.005cm) = {
+  show regex("\p{Ll}+"): it => context {
+    box(
+      scale(
+        x: expansion * 100%,
+        reflow: true,
+        origin: center + bottom,
+        text(
+          size: scaling * 1em,
+          upper(
+            fake-bold(
+              it,
+              stroke: stroke,
+            ),
+          ),
+        ),
+      ),
+    )
+  }
 
-//   text(s)
-// }
+  text(s)
+}
 
-#set text(font: "Libertinus Sans", size: 20pt, tracking: 0.1cm)
+#set text(font: "Libertinus Sans", size: 20pt)
 #set par(justify: true)
 #set page(margin: 1cm, height: auto)
 
-// #table(
-//   columns: (auto, 1fr),
-//   stroke: 0.5pt,
-//   [*Regular*], lorem(30),
-//   [*Small-caps*], smallcaps(lorem(30)),
-//   [*Fake*], fake-smallcaps(lorem(30)),
-// )
+#figure(
+  table(
+    columns: (auto, 1fr),
+    stroke: 0.5pt,
+    [*Regular*], lorem(30),
+    [*Small-caps*], smallcaps(lorem(30)),
+    [*Fake*], fake-smallcaps(lorem(30)),
+  ),
+  caption: [Terefan's solution],
+)
 
 
 // This doesn't breaks the justification, but the tracking (or box scaling from before) is ignore when there's an upper small cap.
@@ -74,10 +78,13 @@
 
 #let my-fake-sc(body) = fake-smallcaps(body, scaling: 0.75, stroke: 0.0075cm)
 
-#table(
-  columns: (auto, 1fr),
-  stroke: 0.5pt,
-  [*Regular*], lorem(30),
-  [*Small-caps*], smallcaps(lorem(30)),
-  [*Fake*], my-fake-sc(lorem(30)),
+#figure(
+  table(
+    columns: (auto, 1fr),
+    stroke: 0.5pt,
+    [*Regular*], lorem(30),
+    [*Small-caps*], smallcaps(lorem(30)),
+    [*Fake*], my-fake-sc(lorem(30)),
+  ),
+  caption: [My solution],
 )
