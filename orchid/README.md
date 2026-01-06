@@ -34,3 +34,11 @@ A Typst package for generating ORCID iD links in various formats. Inspired by La
 ## Documentation
 
 See the [manual](docs/manual.pdf) for complete documentation and examples.
+
+## License
+
+This package is licensed under the MIT License.
+
+### Previous versions MIT-0 license issue
+
+Previous to version 0.1.1, the manifest stated MIT-0 (no attribution) which wasn't the one intended, as the template README stated MIT, thus, to cause no confusion or problems, all versions below from 0.1.1 are considered to be licensed under either MIT or MIT-0.

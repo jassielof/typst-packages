@@ -1,6 +1,6 @@
 [package]
 name = "orchid"
-version = "0.1.0"
+version = "0.1.1"
 exclude = ["docs/"]
 entrypoint = "lib.typ"
 authors = ["Jassiel Ovando <@jassielof>"]
