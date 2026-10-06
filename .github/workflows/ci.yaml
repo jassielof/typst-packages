@@ -34,7 +34,7 @@ jobs:
       - name: Install Task
         uses: go-task/setup-task@v2
       - name: Build manuals
-        run: task
+        run: task www
       - name: README
         run: |
           sudo gem install asciidoctor
