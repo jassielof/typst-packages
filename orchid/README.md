@@ -24,7 +24,7 @@ John Doe #orcid("0000-0002-1825-0097")       // combine with a name by writing t
 
 ## Documentation
 
-See the [manual](https://github.jassielof.io/typst-packages/orchid/manual.pdf) for all options and examples.
+See the [manual](https://github.jassielof.io/typst-packages/orchid.pdf) for all options and examples.
 
 ## License
 

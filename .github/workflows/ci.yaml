@@ -38,7 +38,6 @@ jobs:
       - name: README
         run: |
           sudo gem install asciidoctor
-          task www
           asciidoctor README.adoc -o www/index.html
       - name: Upload page artifacts
         uses: actions/upload-pages-artifact@v5
