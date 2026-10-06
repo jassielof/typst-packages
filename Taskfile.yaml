@@ -1,0 +1,6 @@
+version: 3
+
+tasks:
+  www:
+     cmds:
+       - typst compile --root orchid orchid/docs/manual.typ www/orchid.pdf
