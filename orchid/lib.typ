@@ -30,23 +30,38 @@
   position: "left",
   separator: [~],
   icon: logo-icon(),
+  logo-position: "before",
 ) = {
   check-format(id)
 
-  if format not in ("logo", "full", "compact") {
-    panic("Format must be logo, full, or compact: " + format)
+  if format not in ("logo", "full", "compact", "compact-logo", "full-logo") {
+    panic("Format must be logo, full, compact, compact-logo, or full-logo: " + format)
   }
 
   if position not in ("left", "right") {
-    panic("Logo position must be left or right: " + position)
+    panic("Name position must be left or right: " + position)
+  }
+
+  if logo-position not in ("before", "after") {
+    panic("Logo position must be before or after: " + logo-position)
   }
 
   let identifier-link = base-url + id
 
+  let identifier-content = if format in ("full", "full-logo") {
+    identifier-link
+  } else {
+    id
+  }
+
   let display-content = if format == "logo" {
     icon
-  } else if format == "full" {
-    identifier-link
+  } else if format in ("compact-logo", "full-logo") {
+    if logo-position == "after" {
+      [#identifier-content#separator#icon]
+    } else {
+      [#icon#separator#identifier-content]
+    }
   } else { id }
 
   if name == none {

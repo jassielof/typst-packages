@@ -18,16 +18,25 @@ A Typst package for generating ORCID iD links in various formats. Inspired by La
 #orchid.generate-link(my-id, format: "compact")
 #orchid.generate-link(my-id, format: "compact", name: my-name)
 
+// Compact format with logo (shows the logo and ID)
+#orchid.generate-link(my-id, format: "compact-logo")
+#orchid.generate-link(my-id, format: "compact-logo", name: my-name)
+#orchid.generate-link(my-id, format: "compact-logo", logo-position: "after")
+
 // Full format (shows the complete URL)
 #orchid.generate-link(my-id, format: "full")
 #orchid.generate-link(my-id, format: "full", name: my-name)
+
+// Full format with logo (logo-position can be "before" or "after")
+#orchid.generate-link(my-id, format: "full-logo")
+#orchid.generate-link(my-id, format: "full-logo", logo-position: "after")
 ```
 
 ## Features
 
-- **Multiple display formats**: logo icon, compact ID, or full URL
+- **Multiple display formats**: logo icon, compact ID, compact ID with logo, full URL, or full URL with logo
 - **Name integration**: Display author names alongside ORCID identifiers
-- **Flexible positioning**: Place the logo/ID before or after the name
+- **Flexible positioning**: Place the logo before or after the ID/URL, and place the resulting group before or after the name
 - **ORCID validation**: Automatically validates ORCID ID format
 - **Customizable**: Override the logo icon, separator, and positioning
 
