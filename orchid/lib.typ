@@ -57,8 +57,7 @@
   let shown = if display == "url" { url } else if display == "id" { id } else { none }
   if shown != none and linked == "text" { shown = link(url, shown) }
 
-  // The icon always keeps its alt text: Typst forbids marking content inside
-  // a link as a PDF artifact, and PDF/UA requires alt text on every image.
+  // The icon always keeps its alt text: Typst forbids marking content inside a link as a PDF artifact, and PDF/UA requires alt text on every image.
   let glyph = if icon == none { none } else { orcid-icon(size: size, logo: logo, alt: alt) }
   let parts = if icon == "after" { (shown, glyph) } else { (glyph, shown) }
   let body = parts.filter(p => p != none).join(h(gap))

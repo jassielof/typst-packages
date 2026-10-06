@@ -3,7 +3,7 @@
 #let my-name = [John Doe]
 
 #set document(title: [Orchid manual])
-#set text(lang: "en")
+#set text(lang: "en", font: "Inter")
 // Typst does not style links by default; do it here so the `linked` option is visible.
 #show link: set text(fill: rgb("#0b5cad"))
 #show link: underline
