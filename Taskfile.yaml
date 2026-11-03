@@ -1,6 +1,15 @@
 version: 3
 
 tasks:
+  orchid:
+    dir: orchid
+    env:
+      TYPST_ROOT: .
+      TYPST_FONT_PATHS: ..
+    cmds:
+      - typst compile --pdf-standard ua-1,a-2a docs/manual.typ
   www:
-     cmds:
-       - typst compile --root orchid orchid/docs/manual.typ www/orchid.pdf
+    deps:
+      - orchid
+    cmds:
+      - cp orchid/docs/manual.pdf www/orchid.pdf

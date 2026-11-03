@@ -1,6 +1,6 @@
 #import "../lib.typ" as orchid
 #let my-id = "0000-0002-1825-0097"
-#let my-name = [John Doe]
+#let my-name = [Josiah Carberry]
 
 #set document(title: [Orchid manual])
 #set text(lang: "en", font: "Inter")
@@ -24,7 +24,7 @@
 = Orchid
 Orchid is a small tool to display ORCID iDs in Typst. Mainly inspired by LaTeX's `orcidlink` package.
 
-The main function, `orchid.orcid`, only produces the iD itself. To combine it with a name, write them next to each other (`[John Doe #orchid.orcid(my-id)]`).
+The main function, `orchid.orcid`, only produces the iD itself. To combine it with a name, write them next to each other (`[Josiah Carberry #orchid.orcid(my-id)]`).
 
 = Options
 Every look is a combination of three independent options:
@@ -49,7 +49,7 @@ Every look is a combination of three independent options:
 ORCID's own guidelines ask for the icon plus the full URL, hyperlinked, so that is the default. It also matches the order APA uses (name, icon, URL).
 
 #demo("#orchid.orcid(my-id)")
-#demo("John Doe #orchid.orcid(my-id)")
+#demo("Josiah Carberry #orchid.orcid(my-id)")
 
 == Icon only
 #demo("#orchid.orcid(my-id, display: none)")

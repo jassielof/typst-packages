@@ -22,6 +22,8 @@ John Doe #orcid("0000-0002-1825-0097")       // combine with a name by writing t
 - Accepts a bare iD or a full `https://orcid.org/...` URL
 - Custom icon support, and alt text for accessible PDFs (PDF/UA-1)
 
+When text is displayed, the accompanying icon is decorative and excluded from the PDF reading order. The text remains linked according to `linked`; the decorative icon sits outside the link to satisfy Typst's PDF/UA restrictions. With `display: none`, the icon retains its alternative text and can be linked.
+
 ## Documentation
 
 See the [manual](https://github.jassielof.io/typst-packages/orchid.pdf) for all options and examples.
