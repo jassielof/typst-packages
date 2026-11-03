@@ -4,12 +4,15 @@
 /// Returns the canonical bare iD, e.g. "0000-0002-1825-0097".
 #let _normalize(id) = {
   assert(type(id) == str, message: "ORCID must be a string, got " + str(type(id)))
+
   let id = id.trim().replace(regex("^https?://(www\.)?orcid\.org/"), "").trim("/", at: end).trim()
   id = upper(id)
+
   assert(
     id.contains(regex("^(?:\d{4}-){3}\d{3}[\dX]$")),
     message: "Invalid ORCID format: \"" + id + "\" (expected 0000-0000-0000-000X)",
   )
+
   // ISO 7064 mod 11-2 check digit
   let digits = id.replace("-", "")
   let total = 0
@@ -42,9 +45,15 @@
   logo: none, // custom icon content, replaces the default
   alt: "ORCID iD", // alt text of the default icon (accessible PDFs)
 ) = {
-  assert(icon in ("before", "after", none), message: "icon: \"before\", \"after\" or none")
-  assert(display in ("url", "id", none), message: "display: \"url\", \"id\" or none")
-  assert(linked in ("all", "text", none), message: "linked: \"all\", \"text\" or none")
+  let icon-options = ("before", "after", none)
+  assert(icon in icon-options, message: "icon: " + icon-options.join(", ", last: " or "))
+
+  let display-options = ("url", "id", none)
+  assert(display in display-options, message: "display: " + display-options.join(", ", last: " or "))
+
+  let linked-options = ("all", "text", none)
+  assert(linked in linked-options, message: "linked: " + linked-options.join(", ", last: " or "))
+
   assert(icon != none or display != none, message: "nothing to show: icon and display are both none")
   assert(
     not (linked == "text" and display == none),
