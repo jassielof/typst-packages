@@ -1,12 +1,25 @@
-#import "../lib.typ" as orchid
-#let my-id = "0000-0002-1825-0097"
-#let my-name = [Josiah Carberry]
+// TODO: Rename as examples, as the manual itself is the README.
 
-#set document(title: [Orchid manual])
-#set text(lang: "en", font: "Inter")
-// Typst does not style links by default; do it here so the `linked` option is visible.
+#import "../lib.typ" as orchid
+#let sample-id = "0000-0002-1825-0097"
+#let sample-name = [Josiah Carberry]
+
+#set document(title: [Orchid Manual], author: "Jassiel Ovando F.")
+
+#set text(
+  lang: "en",
+  font: "Inter",
+  discretionary-ligatures: true,
+  stylistic-set: (3, 2),
+  features: ("calt",),
+)
+
+#show raw: set text(
+  font: ("Consolas", "Inconsolata EX"),
+  size: 10pt,
+)
+
 #show link: set text(fill: rgb("#0b5cad"))
-#show link: underline
 
 // Shows the code and its rendered result side by side.
 #let demo(code) = grid(
@@ -17,11 +30,12 @@
   eval(
     code,
     mode: "markup",
-    scope: (orchid: orchid, my-id: my-id, my-name: my-name),
+    scope: (orchid: orchid, my-id: sample-id, my-name: sample-name),
   ),
 )
 
-= Orchid
+#title()
+
 Orchid is a small tool to display ORCID iDs in Typst. Mainly inspired by LaTeX's `orcidlink` package.
 
 The main function, `orchid.orcid`, only produces the iD itself. To combine it with a name, write them next to each other (`[Josiah Carberry #orchid.orcid(my-id)]`).
