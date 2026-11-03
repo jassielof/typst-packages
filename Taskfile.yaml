@@ -7,9 +7,9 @@ tasks:
       TYPST_ROOT: .
       TYPST_FONT_PATHS: ..
     cmds:
-      - typst compile --pdf-standard ua-1,a-2a docs/examples.typ
+      - typst compile --pdf-standard ua-1,a-2a docs/manual.typ
   www:
     deps:
       - orchid
     cmds:
-      - cp orchid/docs/examples.pdf www/orchid.pdf
+      - cp orchid/docs/manual.pdf www/orchid.pdf

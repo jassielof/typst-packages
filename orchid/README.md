@@ -26,7 +26,7 @@ When text is displayed, the accompanying icon is decorative and excluded from th
 
 ## Documentation
 
-For visuals, see [examples](https://github.jassielof.io/typst-packages/orchid.pdf).
+For usage and examples, see the [manual](https://github.jassielof.io/typst-packages/orchid.pdf).
 
 ## License
 
