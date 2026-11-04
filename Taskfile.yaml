@@ -12,4 +12,5 @@ tasks:
     deps:
       - orchid
     cmds:
+      - mkdir -p www
       - cp orchid/docs/manual.pdf www/orchid.pdf
