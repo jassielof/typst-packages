@@ -15,6 +15,11 @@
   features: ("calt",),
 )
 
+#set page(
+  paper: "a4",
+  margin: 3.5cm,
+)
+
 #show raw: set text(
   font: ("Consolas", "Inconsolata EX"),
   size: 10pt,
@@ -54,7 +59,7 @@ The main function, `orchid.orcid`, only produces the iD itself. To combine it wi
 
 = Options
 
-Every look is a combination of three independent options:
+Combine the icon, display, and link options to choose what appears. At least one of the icon or identifier text must be visible. Use `linked: "text"` only when identifier text is visible.
 
 #table(
   columns: (auto, auto, 1fr),
@@ -71,6 +76,11 @@ Every look is a combination of three independent options:
   [`alt`], [string, default `"ORCID iD"`], [Alternative text of the default icon.],
 )
 
+#outline(
+  title: [List of Examples],
+  target: figure.where(kind: "example"),
+)
+
 = Accessibility
 
 The default icon has alternative text (`alt`), so documents built with `--pdf-standard ua-1` compile. If you pass your own `logo` image, give it an `alt` too.
@@ -79,15 +89,11 @@ The default icon has alternative text (`alt`), so documents built with `--pdf-st
 
 The iD is validated in two steps. The format must be `0000-0000-0000-000X`, and the last character must be a valid ISO 7064 mod 11-2 check digit. A mistyped iD that still looks valid fails at compile time. A full `https://orcid.org/...` URL is also accepted as input, and surrounding whitespace and a lowercase `x` are normalized.
 
-#outline(
-  title: [List of Examples],
-  target: figure.where(kind: "example"),
-)
+These checks validate the identifier's format and checksum. Record existence and ownership require separate verification.
 
-#pagebreak()
 = Examples
 
-ORCID's own guidelines ask for the icon plus the full URL, hyperlinked, so that is the default. It also matches the order APA uses (name, icon, URL).
+The default shows the icon and full URL as one link, following ORCID's full iD format. Consult the #link("https://info.orcid.org/documentation/integration-guide/orcid-id-display-guidelines/")[ORCID iD display guidelines] for displaying unauthenticated iDs.
 
 #show figure: set align(left)
 #set figure.caption(position: top)
@@ -115,12 +121,12 @@ ORCID's own guidelines ask for the icon plus the full URL, hyperlinked, so that 
 
 #figure(
   demo("#orchid.orcid(my-id, display: \"id\")"),
-  caption: [iD only],
+  caption: [Bare iD with icon],
 )
 
 #figure(
   demo("#orchid.orcid(my-id, display: \"id\", icon: \"after\")"),
-  caption: [iD only, icon after],
+  caption: [Bare iD with icon after],
 )
 
 #figure(

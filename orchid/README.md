@@ -2,14 +2,28 @@
 
 A Typst package for displaying ORCID iDs, inspired by LaTeX's `orcidlink` package.
 
+## Quick Start
+
+```typst
+#import "@preview/orchid:0.2.0": orcid
+
+Josiah Carberry #orcid("0000-0002-1825-0097")
+```
+
+By default, the icon and full HTTPS URL form one link to the ORCID record.
+
+## Changelog
+
+See [CHANGELOG.adoc](CHANGELOG.adoc) for release notes.
+
 ## Manual
 
-For usage, options and examples, see the [manual](https://github.jassielof.io/typst-packages/orchid.pdf).
+For usage, options and examples, see the [manual](manual.pdf).
 
 ## Issues
 
-Currently PAC 2026 will trigger an inappropriate use of the Figure element because of the boxed image using a Block placement tag. This has been reported to [Typst #9038](https://github.com/typst/typst/issues/9038)
+PAC 2026 can warn about inappropriate use of the Figure element because Typst exports the inline icon with a block placement attribute. See [Typst #9038](https://github.com/typst/typst/issues/9038).
 
 ## License
 
-This package is licensed under the MIT License.
+This package is licensed under the [MIT License](LICENSE.txt).
